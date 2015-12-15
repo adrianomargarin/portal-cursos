@@ -1,0 +1,4 @@
+.img-client img,
+.img-course img{
+    max-width: 600px;
+}
