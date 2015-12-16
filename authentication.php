@@ -1,7 +1,6 @@
 <?php
-
+    header("Content-Type: text/html; charset=UTF-8");
     include('connection.php');
-    session_start();
 
     $username = isset($_POST["username"]) ? addslashes(trim($_POST["username"])) : FALSE;
     $password = isset($_POST["password"]) ? md5(trim($_POST["password"])) : FALSE;
@@ -10,24 +9,20 @@
         echo "Você deve digitar seu usuário e senha!";
         exit;
     }else{
-        $SQL = "SELECT * FROM users WHERE username=".$username."";
+        $SQL = "SELECT * FROM users WHERE username='".$username."' and password='".$password."'";
         $RESULT = mysql_query($SQL);
+        $RESULT = mysql_fetch_array($RESULT);
+
+        echo $SQL;
+
+        if($RESULT>0){
+            session_start();
+            $_SESSION["PHP_AUTH_USER"] = $RESULT;
+            header("Location: index_authenticated.php");
+        }else{
+            setcookie("username_error", "Usuário ou senha incorretos!", (time() + (5)));
+            setcookie("username", $username, (time() + (5)));
+            header("Location: login.php");
+        }
     }
-
-
-    // // User name e password para autenticação
-    // $username = 'teste';
-    // $password = 'teste';
-
-    // //Se as variáveis PHP_AUTH_USER e PHP_AUTH_PW não estão setadas ou são diferentes do esperado.
-    // if (!isset($_SERVER['PHP_AUTH_USER']) ||
-    //     !isset($_SERVER['PHP_AUTH_PW']) ||
-    //     ($_SERVER['PHP_AUTH_USER'] != $username) ||
-    //     ($_SERVER['PHP_AUTH_PW'] != $password)) {
-
-    //     //Se o usuário/senha for incorreto envia os cabeçalhos de autenticação
-    //     header('HTTP/1.1 401 Unauthorized');
-    //     header('WWW-Authenticate: Basic realm="Consulta Clientes"');
-    //     exit('<h2>Consulta de Clientes</h2>Você deve fornecer um usuário e senha válidos para acessar esta página.');
-    // }
 ?>

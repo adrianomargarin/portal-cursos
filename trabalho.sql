@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 14-Dez-2015 às 21:58
+-- Generation Time: 15-Dez-2015 às 18:27
 -- Versão do servidor: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -57,8 +57,8 @@ CREATE TABLE `client` (
   `complement` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `district` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `UF` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `CEP` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `uf` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `cep` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone1` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone2` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -70,6 +70,13 @@ CREATE TABLE `client` (
   `page_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `id_user` int(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `client`
+--
+
+INSERT INTO `client` (`id`, `client_name`, `company_name`, `cnpj`, `street`, `number`, `complement`, `district`, `city`, `uf`, `cep`, `phone1`, `phone2`, `email`, `responsible`, `email_rep`, `phone_resp`, `localization_googlemaps`, `company_logo`, `page_link`, `id_user`) VALUES
+(6, 'Adriano Margarin', 'aaaaaaaaa', 'aaaaaaaaaaa', 'Renato Alves de Oliveira, 176, Bairro São Caetano', 1, 'aaaaaaaaaa', 'aaaaaaaaaaaaa', 'Caxias do Sul', 'RS', '95095255', '+555484184469', 'Adriano Margarin', 'adrcxs@gmail.com', 'aaaaaaaa', 'adrcxs@gmail.com', 'aa', 'bbbb', 'aaaabbb', 'aaaaa', 22);
 
 -- --------------------------------------------------------
 
@@ -105,8 +112,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `is_superuser`) VALUES
-(1, 'adriano', '698dc19d489c4e4db73e28a713eab07b', 1),
-(2, 'maicon', '698dc19d489c4e4db73e28a713eab07b', 1);
+(1, 'adrianomargarin', '0cc175b9c0f1b6a831c399e269772661', 1),
+(2, 'maicon', '0cc175b9c0f1b6a831c399e269772661', 1),
+(22, 'pedroalves', '0cc175b9c0f1b6a831c399e269772661', 0);
 
 --
 -- Indexes for dumped tables
@@ -149,7 +157,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `course`
 --
@@ -159,7 +167,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

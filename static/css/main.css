@@ -2,3 +2,7 @@
 .img-course img{
     max-width: 600px;
 }
+
+.has-error{
+    color: #a94442;
+}
